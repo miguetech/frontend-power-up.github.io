@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminario: Diseño Web Frontend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; /* Evita el scroll global */
+        }
+        .slide {
+            display: none; /* Oculta todas las diapositivas por defecto */
+            animation: fadeIn 0.5s ease-in-out; /* Animación de aparición */
+        }
+        .slide.active {
+            display: block; /* Muestra la diapositiva activa */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* Estilos para la barra de desplazamiento personalizada */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #4a5568; /* bg-gray-700 */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #63b3ed; /* blue-400 */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #4299e1; /* blue-500 */
+        }
+        p * {
+       color: white 
+        }
+        strong * {
+       color: white 
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex flex-col h-screen">
+
+    <div class="flex-grow flex items-center justify-center p-4">
+        <div class="bg-gray-800 rounded-lg shadow-2xl w-full max-w-4xl h-full max-h-[90vh] flex flex-col">
+            <div id="slides-container" class="flex-grow p-8 overflow-y-auto custom-scrollbar">
+
+                <section id="slide-1" class="slide active">
+                    <h1 class="text-5xl font-extrabold mb-4 text-blue-400">Seminario Interactivo: Diseño Web Frontend para Programadores</h1>
+                    <h2 class="text-3xl font-semibold mb-6 text-gray-200">Estructura y Diseño Visual con IA</h2>
+                    <p class="text-xl mb-2 text-white"><strong>Presentador:</strong> [Tu Nombre/Equipo]</p>
+                    <p class="text-xl text-white"><strong>Duración:</strong> 45 minutos</p>
+                </section>
+
+                <section id="slide-2" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Introducción: El Esqueleto del Edificio Digital</h2>
+                    <h3 class="text-2xl font-semibold mb-4">La Importancia del Diseño Web en el Desarrollo Frontend</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>Interfaz directa con el usuario: la "cara" visible.</li>
+                        <li>No es solo estética: es el fundamento de la organización de la información.</li>
+                        <li>Una estructura clara en el código mejora: legibilidad, depuración, colaboración.</li>
+                        <li>Impacta en la mantenibilidad y escalabilidad del proyecto.</li>
+                    </ul>
+                </section>
+
+                <section id="slide-3" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Diseño Web vs. UX/UI: Clarificando los Roles</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Diseño Web (Estructura y Patrones Visuales) vs. UX/UI</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li><strong>Diseño Web Frontend:</strong> Se concentra en la <em>estructura visual</em> y los <em>patrones de interacción</em> (cómo se presenta y organiza el contenido, cómo se implementan las interacciones).</li>
+                        <li><strong>UX/UI:</strong> Se enfoca en la <em>investigación de usuarios</em>, la <em>usabilidad</em> y la <em>experiencia global</em> (el "porqué" detrás de las decisiones).</li>
+                        <li><strong>Enfoque del Seminario:</strong> Elementos visuales y estructurales que los programadores implementan directamente.</li>
+                    </ul>
+                </section>
+
+                <section id="slide-4" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Analogía Clave</h2>
+                    <h3 class="text-2xl font-semibold mb-4">El Diseño Web como el Esqueleto de un Edificio</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>Así como el esqueleto de un edificio (cimientos, vigas, columnas) determina su estabilidad y funcionalidad...</li>
+                        <li>...el diseño web frontend es el esqueleto de una aplicación digital.</li>
+                        <li>Si la estructura está mal concebida, la estética superficial es irrelevante.</li>
+                        <li>Un frontend bien estructurado = robustez, escalabilidad, facilidad de mantenimiento.</li>
+                    </ul>
+                </section>
+
+                <section id="slide-5" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Bases del Diseño Web</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Principios Fundamentales del Diseño Web</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>"Reglas de oro" para la organización visual.</li>
+                        <li>Guían la organización del código, mantenibilidad y responsividad.</li>
+                        <li>Resultan en un código "mejor diseñado".</li>
+                        <li>Cubriremos: Jerarquía Visual, Contraste, Alineación, Repetición, Equilibrio, Proximidad y Espacio en Blanco.</li>
+                    </ul>
+                </section>
+
+                <section id="slide-6" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Principios Fundamentales (Parte 1)</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Jerarquía Visual y Contraste</h3>
+                    <div class="mb-4">
+                        <h4 class="text-xl font-bold text-gray-300">Jerarquía Visual:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Dirige la atención del usuario (tamaño, color, contraste, posición).</li>
+                            <li>Ej: `<h1>` vs `<h2>`, `font-size`, `font-weight`, ubicación HTML.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-300">Contraste:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Diferencia elementos y los hace destacar (color, tamaño, forma, tipografía).</li>
+                            <li>Crucial para legibilidad y visibilidad (ej. botones CTA).</li>
+                            <li>Ej: `color`, `background-color`, `border`, `box-shadow`.</li>
+                            <li>Considerar WCAG (3:1 texto grande, 4.5:1 texto pequeño).</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="slide-7" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Principios Fundamentales (Parte 2)</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Alineación y Repetición</h3>
+                    <div class="mb-4">
+                        <h4 class="text-xl font-bold text-gray-300">Alineación:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Crea orden y conexión entre elementos.</li>
+                            <li>Evita el diseño desordenado.</li>
+                            <li>Ej: `margin`, `padding`, `text-align`, `display: flex` (justify/align), `display: grid`.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-300">Repetición:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Reutilización consistente de elementos visuales (colores, fuentes, estilos).</li>
+                            <li>Crea cohesión y familiaridad.</li>
+                            <li>Ej: Clases CSS, tokens de diseño, bibliotecas de componentes.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="slide-8" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Principios Fundamentales (Parte 3)</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Equilibrio, Proximidad y Espacio en Blanco</h3>
+                    <div class="mb-4">
+                        <h4 class="text-xl font-bold text-gray-300">Equilibrio:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Distribuye el "peso visual" para crear estabilidad.</li>
+                            <li>Simétrico, asimétrico o radial.</li>
+                            <li>Ej: `width`, `height`, `margin`, `padding`, `flexbox`, `CSS Grid`.</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-xl font-bold text-gray-300">Proximidad y Espacio en Blanco:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Agrupa elementos relacionados.</li>
+                            <li>Utiliza el espacio vacío para mejorar legibilidad y reducir desorden.</li>
+                            <li>Ej: `margin`, `padding`, agrupamiento con `div`, `section`, `article`.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="slide-9" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Planificación Estructural</h2>
+                    <h3 class="text-2xl font-semibold mb-4">¿Por qué es Crucial Planear la Estructura antes de Codificar?</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>Menos depuración, ciclos de desarrollo más rápidos, mantenimiento sencillo.</li>
+                        <li><strong>Legibilidad y Mantenibilidad:</strong> Código más fácil de leer, comprender y mantener.</li>
+                        <li><strong>Escalabilidad:</strong> Añadir nuevas funcionalidades sin comprometer el diseño.</li>
+                        <li><strong>SEO:</strong> Ayuda a los motores de búsqueda a interpretar el contenido.</li>
+                        <li><strong>Colaboración en Equipo:</strong> Facilita el trabajo conjunto en proyectos grandes.</li>
+                    </ul>
+                </section>
+
+                <section id="slide-10" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Malas vs. Buenas Prácticas</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Ejemplos de Malas vs. Buenas Prácticas en HTML/CSS</h3>
+                    <div class="mb-4">
+                        <h4 class="text-xl font-bold text-gray-300">HTML Semántico:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Mal: `div class="header"`</li>
+                            <li>Bien: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-xl font-bold text-gray-300">Nomenclatura Consistente:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Mal: `div id="n1"`, `function change()`</li>
+                            <li>Bien: `div id="main-navigation"`, `function updateUserName()`</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="text-xl font-bold text-gray-300">Separación de Estilos:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Mal: `<p style="color: red;">`, `<style> p { color: blue; } </style>`</li>
+                            <li>Bien: `<link rel="stylesheet" href="styles.css">`</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-300">Minificación y Optimización:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Mal: Código con comentarios y espacios excesivos en producción.</li>
+                            <li>Bien: Código minificado para producción.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="slide-11" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Patrones de Diseño Web Interactivo</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Implementación Visual y Estructural</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>Soluciones reutilizables para problemas comunes de interfaz.</li>
+                        <li>Reducen la carga cognitiva para usuarios y desarrolladores.</li>
+                        <li>Permiten codificación eficiente y mejor mantenibilidad.</li>
+                        <li>Evitan soluciones ad-hoc, resultando en código estandarizado.</li>
+                    </ul>
+                </section>
+
+                <section id="slide-12" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Patrones de Diseño (Parte 1)</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Cards (Tarjetas) y Grids (Cuadrículas CSS)</h3>
+                    <div class="mb-4">
+                        <h4 class="text-xl font-bold text-gray-300">Cards:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Contenedores flexibles para agrupar información relacionada.</li>
+                            <li>Estructura: Imagen/icono, título, descripción, CTA.</li>
+                            <li>Implementación: HTML semántico (`<article>`), CSS (bordes, sombras, padding/margin).</li>
+                            <li>Responsividad: Flexbox o CSS Grid.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-300">Grids:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Sistema de maquetación bidimensional (filas y columnas).</li>
+                            <li>Estructura: Disposición precisa y flexible.</li>
+                            <li>Implementación: `display: grid`, `grid-template-rows/columns`, `grid-gap`.</li>
+                            <li>Responsividad: Inherentemente responsivas, `@media queries`.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="slide-13" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Patrones de Diseño (Parte 2)</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Navegación Sticky (Fija) y Microinteracciones con Hover</h3>
+                    <div class="mb-4">
+                        <h4 class="text-xl font-bold text-gray-300">Navegación Sticky:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Menús o elementos que permanecen visibles al desplazarse.</li>
+                            <li>Estructura: `<header>` o `<nav>` que se "adhiere".</li>
+                            <li>Implementación: `position: sticky` o `position: fixed`.</li>
+                            <li>Consideraciones: Tamaño, estética, pruebas móviles, impacto en carga.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-300">Microinteracciones con Hover:</h4>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Pequeñas animaciones o cambios visuales al pasar el cursor.</li>
+                            <li>Estructura: Cambios sutiles (color, sombra, escala, movimiento).</li>
+                            <li>Implementación: CSS `transition` y `:hover`.</li>
+                            <li>Propósito: Retroalimentación visual, indicar interactividad.</li>
+                            <li>Consideraciones: Cortas, sutiles (300-500ms), accesibilidad (táctil).</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="slide-14" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Flujo de Trabajo con Prompt Engineering</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Potenciando el Diseño con Prompt Engineering</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>La IA (LLMs como ChatGPT, Gemini) es una herramienta, no un reemplazo.</li>
+                        <li>Acelera y asiste en tareas repetitivas o generación de ideas.</li>
+                        <li>Permite explorar opciones de diseño y generar código base rápidamente.</li>
+                        <li>La IA es un <em>multiplicador de productividad</em>, no una amenaza.</li>
+                    </ul>
+                </section>
+
+                <section id="slide-15" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Cómo Usar IA para...</h2>
+                    <div class="mb-4">
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-300">Generar Esquemas de Diseño Rápidos y Wireframes</h3>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>Describe la página/componente en texto.</li>
+                            <li>IA genera descripción de wireframe, HTML básico o SVG.</li>
+                            <li>Comienza simple e itera, sé específico (dispositivo, diseño, elementos).</li>
+                            <li>Puedes cargar capturas de pantalla o bocetos para conversión.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-300">Obtener Paletas de Colores Coherentes</h3>
+                        <ul class="list-disc list-inside text-lg ml-4 space-y-1">
+                            <li>IA sugiere paletas basadas en descripción (marca, industria, imagen).</li>
+                            <li>Asegura coherencia visual sin teoría del color profunda.</li>
+                            <li>Ej: "Paleta moderna minimalista para app de gestión de proyectos, tonos fríos, acento vibrante."</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="slide-16" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Cómo Usar IA para... (Continuación)</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Sugerir Estructuras HTML/CSS Basadas en Buenas Prácticas</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>IA genera fragmentos de código para componentes (barra de navegación, botón con hover).</li>
+                        <li>Se adhiere a buenas prácticas de codificación.</li>
+                        <li>Ej: "Código HTML/CSS para un componente 'card' responsivo con imagen, título, descripción y botón, con sombra sutil al hover."</li>
+                        <li><strong>¡Importante!</strong> Siempre revisar y refinar el código generado por IA.</li>
+                    </ul>
+                </section>
+
+                <section id="slide-17" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Prompts Esenciales para Diseño Frontend con IA</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Tabla de Ejemplos:</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-gray-700 rounded-lg text-lg">
+                            <thead>
+                                <tr class="bg-blue-600 text-left text-white">
+                                    <th class="py-3 px-4 rounded-tl-lg">Categoría</th>
+                                    <th class="py-3 px-4 rounded-tr-lg">Prompt de Ejemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-600">
+                                    <td class="py-3 px-4">Generar Wireframe</td>
+                                    <td class="py-3 px-4">"Crea un wireframe minimalista en HTML para una página de producto de e-commerce..."</td>
+                                </tr>
+                                <tr class="border-b border-gray-600">
+                                    <td class="py-3 px-4">Paleta de Colores</td>
+                                    <td class="py-3 px-4">"Sugiere una paleta de colores moderna y minimalista para una aplicación web de gestión de proyectos..."</td>
+                                </tr>
+                                <tr class="border-b border-gray-600">
+                                    <td class="py-3 px-4">Estructura HTML/CSS</td>
+                                    <td class="py-3 px-4">"Genera el código HTML y CSS para un componente de 'card' responsivo..."</td>
+                                </tr>
+                                <tr class="border-b border-gray-600">
+                                    <td class="py-3 px-4">Refactorizar CSS</td>
+                                    <td class="py-3 px-4">"Revisa el siguiente código CSS y sugiere mejoras para optimizar su rendimiento..."</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="slide-18" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">✨ Generador de Estructura HTML/CSS con IA</h2>
+                    <p class="text-lg mb-4 text-white">Describe el componente HTML/CSS que deseas generar. Por ejemplo: "Un botón primario con efecto hover" o "Una tarjeta de producto con imagen, título y precio".</p>
+                    <textarea id="code-prompt" class="w-full p-3 rounded-md bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 h-32" placeholder="Describe el componente HTML/CSS aquí..."></textarea>
+                    <button id="generate-code-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 w-full md:w-auto">
+                        Generar Código ✨
+                    </button>
+                    <div id="code-output-loading" class="mt-4 text-center text-blue-400 hidden">
+                        Generando código...
+                    </div>
+                    <div id="code-output-error" class="mt-4 text-red-400 hidden">
+                        Ocurrió un error al generar el código. Inténtalo de nuevo.
+                    </div>
+                    <pre id="generated-code" class="mt-4 p-4 bg-gray-900 text-green-300 rounded-md overflow-x-auto text-sm whitespace-pre-wrap"></pre>
+                </section>
+
+                <section id="slide-19" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">✨ Sugerencia de Paleta de Colores con IA</h2>
+                    <p class="text-lg mb-4 text-white">Describe el tema o estado de ánimo para la paleta de colores. Por ejemplo: "Paleta para una aplicación de meditación, tonos suaves y relajantes" o "Colores vibrantes para un sitio web de eventos musicales".</p>
+                    <textarea id="palette-prompt" class="w-full p-3 rounded-md bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 h-32" placeholder="Describe el tema de la paleta de colores aquí..."></textarea>
+                    <button id="generate-palette-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 w-full md:w-auto">
+                        Generar Paleta ✨
+                    </button>
+                    <div id="palette-output-loading" class="mt-4 text-center text-blue-400 hidden">
+                        Generando paleta...
+                    </div>
+                    <div id="palette-output-error" class="mt-4 text-red-400 hidden">
+                        Ocurrió un error al generar la paleta. Inténtalo de nuevo.
+                    </div>
+                    <div id="generated-palette" class="mt-6">
+                        </div>
+                </section>
+
+                <section id="slide-20" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Cierre Interactivo</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Preguntas Clave para Autoevaluar el Diseño</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>¿La estructura guía al usuario de manera intuitiva?</li>
+                        <li>¿Las interacciones son intuitivas y proporcionan retroalimentación clara?</li>
+                        <li>¿Se aplican consistentemente los principios de jerarquía visual, contraste y alineación?</li>
+                        <li>¿El diseño es responsivo y mantiene su coherencia visual en diferentes dispositivos?</li>
+                        <li>¿El código HTML es semántico y sigue las buenas prácticas de estructuración?</li>
+                        <li>¿El CSS está optimizado y separado de manera modular?</li>
+                    </ul>
+                </section>
+
+                <section id="slide-21" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Mini-Quiz o Ejercicio Rápido</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Ejercicio Práctico: Diseña un Componente Simple con IA</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>Diseñen un componente simple (ej. tarjeta de producto, encabezado de sección).</li>
+                        <li>Utilicen prompts con una herramienta de IA (ChatGPT, Gemini, etc.).</li>
+                        <li>Apliquen los principios de diseño y buenas prácticas aprendidas.</li>
+                        <li>Evalúen el resultado generado por la IA con las preguntas de autoevaluación.</li>
+                        <li><strong>Objetivo:</strong> Experimentar cómo la IA asiste y la importancia de la revisión crítica.</li>
+                    </ul>
+                </section>
+
+                <section id="slide-22" class="slide">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">Conclusiones y Recomendaciones</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Conclusiones y Recomendaciones Clave</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>El diseño web frontend es fundamental para la calidad del código, eficiencia y escalabilidad.</li>
+                        <li>Dominar principios de diseño visual = código legible, mantenible y robusto.</li>
+                        <li>La planificación estructural reduce la deuda técnica.</li>
+                        <li>Patrones de diseño interactivo = eficiencia y consistencia.</li>
+                        <li>La IA potencia la productividad, no reemplaza el juicio humano.</li>
+                    </ul>
+                    <h4 class="text-xl font-bold text-gray-300 mt-4">Recomendaciones:</h4>
+                    <ol class="list-decimal list-inside text-lg ml-4 space-y-1">
+                        <li>Priorizar la Estructura.</li>
+                        <li>Dominar los Principios Fundamentales.</li>
+                        <li>Adoptar Patrones de Diseño.</li>
+                        <li>Integrar la IA en el Flujo de Trabajo (con revisión crítica).</li>
+                        <li>Practicar la Autoevaluación Continua.</li>
+                    </ol>
+                </section>
+
+                <section id="slide-23" class="slide">
+                    <h2 class="text-5xl font-extrabold mb-6 text-blue-400">¡Gracias!</h2>
+                    <h3 class="text-3xl font-semibold mb-4">Preguntas y Respuestas</h3>
+                    <p class="text-xl mb-2">¡Gracias por su atención!</p>
+                    <p class="text-xl mb-2">[Tu Nombre/Contacto]</p>
+                    <p class="text-xl">[Tu Sitio Web/Redes Sociales (opcional)]</p>
+                </section>
+
+            </div>
+
+            <div class="bg-gray-700 p-4 flex justify-between items-center rounded-b-lg">
+                <button id="prev-slide" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    Anterior
+                </button>
+                <span id="slide-counter" class="text-lg font-semibold text-gray-200">1 / 23</span>
+                <button id="next-slide" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    Siguiente
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevButton = document.getElementById('prev-slide');
+            const nextButton = document.getElementById('next-slide');
+            const slideCounter = document.getElementById('slide-counter');
+            let currentSlideIndex = 0;
+
+            // Elementos para el generador de código
+            const codePromptTextarea = document.getElementById('code-prompt');
+            const generateCodeBtn = document.getElementById('generate-code-btn');
+            const generatedCodePre = document.getElementById('generated-code');
+            const codeOutputLoading = document.getElementById('code-output-loading');
+            const codeOutputError = document.getElementById('code-output-error');
+
+            // Elementos para el generador de paletas
+            const palettePromptTextarea = document.getElementById('palette-prompt');
+            const generatePaletteBtn = document.getElementById('generate-palette-btn');
+            const generatedPaletteDiv = document.getElementById('generated-palette');
+            const paletteOutputLoading = document.getElementById('palette-output-loading');
+            const paletteOutputError = document.getElementById('palette-output-error');
+
+            // Function to show the current slide and update the counter
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+                slideCounter.textContent = `${index + 1} / ${slides.length}`;
+            }
+
+            // Handler for the "Next" button
+            nextButton.addEventListener('click', () => {
+                if (currentSlideIndex < slides.length - 1) {
+                    currentSlideIndex++;
+                    showSlide(currentSlideIndex);
+                }
+            });
+
+            // Handler for the "Previous" button
+            prevButton.addEventListener('click', () => {
+                if (currentSlideIndex > 0) {
+                    currentSlideIndex--;
+                    showSlide(currentSlideIndex);
+                }
+            });
+
+            // --- Gemini API Integration for Code Generation ---
+            generateCodeBtn.addEventListener('click', async () => {
+                const prompt = codePromptTextarea.value.trim();
+                if (!prompt) {
+                    codeOutputError.textContent = 'Por favor, introduce una descripción para generar el código.';
+                    codeOutputError.classList.remove('hidden');
+                    return;
+                }
+
+                codeOutputError.classList.add('hidden');
+                generatedCodePre.textContent = '';
+                codeOutputLoading.classList.remove('hidden');
+                generateCodeBtn.disabled = true;
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: `Genera el código HTML y CSS para el siguiente componente web. Incluye solo el HTML y CSS, sin envolver en etiquetas <html>, <head>, <body>. Asegúrate de que sea responsivo y siga buenas prácticas. Descripción: "${prompt}"` }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        generatedCodePre.textContent = text;
+                    } else {
+                        codeOutputError.textContent = 'No se pudo generar el código. Inténtalo de nuevo con una descripción diferente.';
+                        codeOutputError.classList.remove('hidden');
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API for code generation:', error);
+                    codeOutputError.textContent = 'Error de red o del servidor al generar el código. Consulta la consola.';
+                    codeOutputError.classList.remove('hidden');
+                } finally {
+                    codeOutputLoading.classList.add('hidden');
+                    generateCodeBtn.disabled = false;
+                }
+            });
+
+            // --- Gemini API Integration for Color Palette Generation ---
+            generatePaletteBtn.addEventListener('click', async () => {
+                const prompt = palettePromptTextarea.value.trim();
+                if (!prompt) {
+                    paletteOutputError.textContent = 'Por favor, introduce un tema para generar la paleta.';
+                    paletteOutputError.classList.remove('hidden');
+                    return;
+                }
+
+                paletteOutputError.classList.add('hidden');
+                generatedPaletteDiv.innerHTML = '';
+                paletteOutputLoading.classList.remove('hidden');
+                generatePaletteBtn.disabled = true;
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: `Genera una paleta de colores moderna y coherente para el siguiente tema. Proporciona el nombre de la paleta y una lista de 4-5 colores, incluyendo su nombre y código hexadecimal. Tema: "${prompt}"` }] });
+
+                    const payload = {
+                        contents: chatHistory,
+                        generationConfig: {
+                            responseMimeType: "application/json",
+                            responseSchema: {
+                                type: "OBJECT",
+                                properties: {
+                                    "paletteName": { "type": "STRING" },
+                                    "colors": {
+                                        "type": "ARRAY",
+                                        "items": {
+                                            "type": "OBJECT",
+                                            "properties": {
+                                                "name": { "type": "STRING" },
+                                                "hex": { "type": "STRING" }
+                                            },
+                                            "propertyOrdering": ["name", "hex"]
+                                        }
+                                    }
+                                },
+                                "propertyOrdering": ["paletteName", "colors"]
+                            }
+                        }
+                    };
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const json = result.candidates[0].content.parts[0].text;
+                        const parsedJson = JSON.parse(json);
+
+                        if (parsedJson.paletteName && parsedJson.colors && Array.isArray(parsedJson.colors)) {
+                            let htmlOutput = `<h3 class="text-2xl font-semibold text-blue-300 mb-4">${parsedJson.paletteName}</h3>`;
+                            htmlOutput += `<div class="flex flex-wrap gap-4 justify-center">`;
+                            parsedJson.colors.forEach(color => {
+                                htmlOutput += `
+                                    <div class="flex flex-col items-center p-3 rounded-lg shadow-md bg-gray-700">
+                                        <div class="w-20 h-20 rounded-full border-2 border-gray-600" style="background-color: ${color.hex};"></div>
+                                        <p class="mt-2 text-md font-medium">${color.name}</p>
+                                        <p class="text-sm text-gray-400">${color.hex}</p>
+                                    </div>
+                                `;
+                            });
+                            htmlOutput += `</div>`;
+                            generatedPaletteDiv.innerHTML = htmlOutput;
+                        } else {
+                            paletteOutputError.textContent = 'La IA no devolvió una estructura de paleta válida. Inténtalo de nuevo.';
+                            paletteOutputError.classList.remove('hidden');
+                        }
+                    } else {
+                        paletteOutputError.textContent = 'No se pudo generar la paleta. Inténtalo de nuevo con un tema diferente.';
+                        paletteOutputError.classList.remove('hidden');
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API for palette generation:', error);
+                    paletteOutputError.textContent = 'Error de red o del servidor al generar la paleta. Consulta la consola.';
+                    paletteOutputError.classList.remove('hidden');
+                } finally {
+                    paletteOutputLoading.classList.add('hidden');
+                    generatePaletteBtn.disabled = false;
+                }
+            });
+
+            // Initialize the presentation by showing the first slide
+            showSlide(currentSlideIndex);
+        });
+    </script>
+</body>
+</html>
