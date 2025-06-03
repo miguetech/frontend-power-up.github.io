@@ -1,0 +1,55 @@
+name: Deploy Vite App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # O la rama principal de tu repositorio (master, main)
+  workflow_dispatch: # Permite ejecutar el workflow manualmente desde la interfaz de GitHub Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # Usa una versión de Node.js compatible
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+        env:
+          # Aquí es donde pasas la variable de entorno de GitHub Actions a tu build de Vite.
+          # DEBE llamarse VITE_API_KEY en el lado de GitHub Actions y en tu código,
+          # incluso si tu Secret en GitHub se llama solo API_KEY.
+          VITE_API_KEY: ${{ secrets.API_KEY }}
+
+      # Recomendado si usas React Router o rutas internas para evitar 404s en GitHub Pages
+      - name: Adjust for SPA routing
+        run: cp dist/index.html dist/404.html
+
+      - name: Upload artifact for deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' # Sube solo el contenido de la carpeta 'dist'
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
